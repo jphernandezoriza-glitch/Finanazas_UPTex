@@ -1,0 +1,120 @@
+// ── BUTTONS ───────────────────────────────────────
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+
+  &--primary {
+    background: var(--primary);
+    color: var(--on-primary);
+    &:hover { filter: brightness(1.1); }
+  }
+
+  &--outline {
+    background: var(--white);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    &:hover { border-color: var(--primary); background: var(--background); }
+  }
+
+  &--success {
+    background: var(--feedback-success-500);
+    color: var(--white);
+    &:hover { background: var(--feedback-success-600); }
+  }
+
+  &--danger {
+    background: var(--feedback-danger-500);
+    color: var(--white);
+    &:hover { background: var(--feedback-danger-600); }
+  }
+
+  &--sm {
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+
+  &--lg {
+    padding: 12px 32px;
+    font-size: 14px;
+  }
+  
+  &--wide {
+    padding: 12px 32px;
+    font-size: 14px;
+  }
+
+  &--ghost {
+    background: var(--transparent);
+    color: var(--primary);
+    padding: 4px 8px;
+    &:hover { background: var(--background); }
+  }
+
+  &--dashed {
+    border: 1px dashed var(--border);
+    width: 100%;
+    &:hover { border-color: var(--primary); color: var(--primary); }
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// ── PREMIUM BUTTONS ──────────────────────────────────
+.btn-premium {
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--on-primary);
+  min-width: 200px;
+  white-space: nowrap;
+
+  svg { transition: transform 0.3s; }
+
+  &:hover {
+    transform: translateY(-3px);
+    svg { transform: scale(1.1); }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  &--danger {
+    background: linear-gradient(135deg, var(--danger) 0%, var(--danger-dark) 100%);
+    box-shadow: 0 8px 20px -6px rgba(var(--danger-dark-rgb), 0.4);
+    &:hover { box-shadow: 0 12px 25px -4px rgba(var(--danger-dark-rgb), 0.5); }
+  }
+
+  &--success {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    box-shadow: 0 8px 20px -6px rgba(var(--primary-rgb), 0.4);
+    &:hover { box-shadow: 0 12px 25px -4px rgba(var(--primary-rgb), 0.5); }
+  }
+}

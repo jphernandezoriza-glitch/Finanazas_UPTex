@@ -1,0 +1,40 @@
+// ── STATUS PILLS ──────────────────────────────────
+.admin-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &--success { background: var(--feedback-green-50); color: var(--feedback-success-500); }
+  &--danger  { background: var(--feedback-danger-50); color: var(--feedback-danger-500); }
+  &--warning { background: var(--feedback-warning-50); color: var(--feedback-amber-600); }
+  &--info    { background: var(--feedback-blue-50); color: var(--feedback-blue-600); }
+  &--progress { 
+    background: var(--feedback-sky-50); 
+    color: var(--feedback-info-700); 
+    border: 1px solid var(--feedback-info-200); 
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, var(--transparent), rgba(var(--white-rgb), 0.6), var(--transparent));
+      animation: admin-shimmer 2s infinite;
+    }
+  }
+  &--purple  { background: var(--purple-light); color: var(--feedback-purple-600); }
+  &--neutral { background: var(--background); color: var(--text-muted); }
+}
+
+@keyframes admin-shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}

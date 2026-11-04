@@ -1,0 +1,11 @@
+{
+    "name": "PortalAlumno",
+    "alias": "portalalumno",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PortalAlumno\\Providers\\PortalAlumnoServiceProvider"
+    ],
+    "files": []
+}

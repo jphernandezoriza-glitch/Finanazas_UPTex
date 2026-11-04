@@ -1,0 +1,6 @@
+# PATCH MANUAL — base documental: UPTex fase 2 / 2026-09-11
+# 1) Conserva PermissionsEnum::ACCESO_FINANZAS ('acceso.finanzas').
+# 2) En PortalNavigationService, bajo el permiso anterior, agrega "Servicios y otros pagos"
+#    enlazando a admin.finanzas.servicios.
+# 3) Importa el parcial SCSS de Finanzas desde el bundle real de PortalAdministrativo.
+# 4) Habilita el módulo mediante artisan; no edites modules_statuses.json a mano.

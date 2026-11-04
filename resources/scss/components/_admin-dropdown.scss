@@ -1,0 +1,86 @@
+.admin-dropdown {
+  position: relative;
+  width: 100%;
+
+  &__trigger {
+    display: flex;
+    width: 100%;
+    min-height: 42px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--border, var(--neutral-slate-300));
+    border-radius: 0.5rem;
+    background: var(--surface, var(--white));
+    color: var(--text, var(--neutral-slate-900));
+    font-family: inherit;
+    font-size: 0.92rem;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+
+    &:hover {
+      border-color: var(--primary, var(--storm-teal));
+    }
+
+    &.is-open,
+    &:focus {
+      outline: 0;
+      border-color: var(--primary, var(--storm-teal));
+      box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    width: 100%;
+    max-height: 220px;
+    flex-direction: column;
+    overflow-y: auto;
+    border: 1px solid var(--border, var(--neutral-slate-300));
+    border-radius: 0.5rem;
+    background: var(--surface, var(--white));
+    box-shadow: 0 10px 25px rgba(var(--black-rgb), 0.15);
+
+    &--dropup,
+    .admin-dropdown--dropup & {
+      bottom: calc(100% + 4px);
+    }
+  }
+
+  &__option {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    border: 0;
+    background: none;
+    color: var(--text, var(--neutral-slate-800));
+    font-family: inherit;
+    font-size: 0.88rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.12s ease, color 0.12s ease;
+
+    &:hover {
+      background: var(--primary-soft);
+      color: var(--primary, var(--storm-teal));
+    }
+
+    &.is-selected {
+      background: var(--primary-soft);
+      color: var(--primary, var(--storm-teal));
+      font-weight: 700;
+    }
+  }
+
+  &__empty {
+    padding: 0.75rem 0.85rem;
+    color: var(--text-muted, var(--neutral-slate-400));
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}
+

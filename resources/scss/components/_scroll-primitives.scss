@@ -1,0 +1,101 @@
+// Scroll horizontal institucional para tablas/grids densos en movil. Se aplica
+// como wrapper explicito y tambien a contenedores existentes que ya agrupan
+// tablas anchas en admin, docente y alumno.
+.uptex-scroll-x,
+.responsive-scroll-x,
+.admin-table-scroll,
+.docente-table-wrap,
+.kardex-table-wrapper,
+.dashboard-table-card:has(table),
+.admin-section-card:has(table) {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: var(--border-soft) var(--panel-surface);
+  scrollbar-width: thin;
+
+  >table,
+  .admin-tbl,
+  .docente-table,
+  .kardex-table {
+    min-width: 760px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .uptex-scroll-x,
+  .responsive-scroll-x,
+  .admin-table-scroll,
+  .docente-table-wrap,
+  .kardex-table-wrapper,
+  .dashboard-table-card:has(table),
+  .admin-section-card:has(table) {
+    margin-right: calc(var(--portal-content-padding, 24px) * -0.5);
+    padding-bottom: 0.35rem;
+  }
+}
+
+.periodos-command__calendar--warning {
+  border-color: rgba(var(--warning-rgb), 0.4);
+  color: var(--warning-strong, var(--feedback-amber-800));
+  text-decoration: none;
+}
+
+@keyframes ui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Refuerzo transversal de modo oscuro solo para primitivas compartidas sin
+// identidad visual propia; las vistas complejas controlan sus tablas, cards y
+// calendarios desde sus parciales de modulo.
+html[data-theme='dark'] {
+  :is(.admin-view, .alumno-dashboard, .alumno-page-shell, .docente-dashboard, .docente-page-shell, .docente-dashboard-view, .reportes-bi) {
+    color: var(--text);
+  }
+
+  :is(.admin-view, .alumno-dashboard, .alumno-page-shell, .docente-dashboard, .docente-page-shell, .docente-dashboard-view, .reportes-bi) :is(.admin-filter-select__button,
+    .admin-filter-select__menu,
+    .archivo-upload-form__panel,
+    .docente-empty-card,
+    .beca-empty-state,
+    .reportes-topbar,
+    .reportes-bi__main) {
+    border-color: var(--border-soft) !important;
+    background: var(--panel-surface) !important;
+    color: var(--text) !important;
+  }
+
+  :is(.admin-view, .alumno-dashboard, .alumno-page-shell, .docente-dashboard, .docente-page-shell, .docente-dashboard-view, .reportes-bi) :is(input,
+    textarea,
+    select,
+    .admin-input,
+    .admin-select,
+    .admin-input-date,
+    .filter-select,
+    .custom-select-trigger,
+    .custom-select-dropdown,
+    .uptex-select__button,
+    .uptex-select__menu,
+    .archivo-upload-form__select-trigger,
+    .archivo-upload-form__select-menu) {
+    border-color: var(--input-border) !important;
+    background: var(--input-surface) !important;
+    color: var(--text) !important;
+  }
+
+  :is(.admin-view, .alumno-dashboard, .alumno-page-shell, .docente-dashboard, .docente-page-shell, .docente-dashboard-view, .reportes-bi) :is(.td-sub,
+    .text-muted,
+    .admin-reportes__table-note,
+    .docente-table__subtext,
+    .periodo-subtitle,
+    .beca-field small,
+    .mobile-table-carousel__meta,
+    .student-card-carousel__subtitle) {
+    color: var(--text-muted) !important;
+  }
+
+}

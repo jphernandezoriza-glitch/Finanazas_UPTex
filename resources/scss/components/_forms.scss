@@ -1,0 +1,134 @@
+// ── FORM ELEMENTS ─────────────────────────────────
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  input, select, textarea {
+    padding: 8px 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    background: var(--input-surface);
+    color: var(--text);
+    transition: border-color 0.2s;
+
+    &:focus { border-color: var(--primary); }
+  }
+
+  input[type="file"] {
+    background: var(--table-row-muted);
+    padding: 6px 10px;
+    cursor: pointer;
+
+    &::file-selector-button {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 11px;
+      margin-right: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+
+      &:hover {
+      background: var(--primary-dark);
+        transform: translateY(-0.5px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    &:hover {
+      border-color: var(--primary);
+      background: var(--table-row-hover);
+    }
+  }
+
+  select { cursor: pointer; }
+}
+
+.admin-form-card {
+  background: var(--panel-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(var(--black-rgb), 0.04);
+
+  h3 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-form-label-caps {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.admin-form-input-full {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  background: var(--input-surface);
+  color: var(--text);
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-ring);
+  }
+}
+
+.error-msg {
+  font-size: 11px;
+  color: var(--danger, var(--feedback-danger-500));
+  font-weight: 600;
+}

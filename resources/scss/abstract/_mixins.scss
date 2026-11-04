@@ -1,0 +1,50 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin transition-default {
+    transition: all 0.2s ease-in-out;
+}
+
+@mixin card-base {
+    background: var(--panel-surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+}
+
+@mixin kpi-bottom-accent($accent: var(--kpi-accent, var(--card-accent, var(--primary))), $height: 4px) {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: $height;
+        background: $accent;
+        pointer-events: none;
+    }
+}
+
+/* Breakpoints Responsivos */
+@mixin tablet {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}

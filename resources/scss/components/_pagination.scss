@@ -1,0 +1,107 @@
+// ── ADMIN PAGINATION ──────────────────────────────
+.admin-pagination-container,
+.admin-table-pagination {
+    margin-top: 8px;
+    padding: 20px 24px;
+    border-top: 1px solid var(--border-strong, var(--border));
+    background: var(--panel-surface);
+    border-radius: 0 0 12px 12px;
+}
+
+.admin-pagination {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__desktop {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 16px;
+        align-items: center;
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    &__info {
+        font-size: 13px;
+        color: var(--text-muted);
+        strong { color: var(--text); }
+    }
+
+    &__per-page {
+        justify-self: center;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    &__links {
+        display: flex;
+        gap: 6px;
+        justify-content: flex-end;
+        min-width: 0;
+    }
+
+    &__link {
+        min-width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 8px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--input-surface);
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+
+        svg { width: 16px; height: 16px; }
+
+        &:hover:not(&--disabled) {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--table-row-hover);
+        }
+
+        &--active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        &--disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--table-row-muted);
+        }
+
+        &--dots {
+            border: none;
+            cursor: default;
+            background: var(--transparent);
+        }
+    }
+
+    &__mobile {
+        display: none;
+        gap: 8px;
+        flex-wrap: wrap;
+
+        @media (max-width: 768px) {
+            display: flex;
+
+            .admin-btn { flex: 1; }
+
+            .admin-pagination__per-page {
+                flex: 1 0 100%;
+                justify-content: center;
+                margin-bottom: 4px;
+            }
+        }
+    }
+}

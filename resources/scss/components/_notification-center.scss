@@ -1,0 +1,346 @@
+// Campana institucional: eventos persistentes del sistema, lectura y papelera.
+// Los toasts flotantes de accion viven en .ui-toast-center para separar contratos.
+.ui-notifications {
+    position: relative;
+
+    &__panel {
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        right: 0;
+        width: min(380px, 88vw);
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid var(--border-soft);
+        background: rgba(var(--surface-rgb), 0.98);
+        box-shadow: 0 20px 40px rgba(var(--neutral-slate-900-rgb), 0.16);
+        z-index: 60;
+    }
+
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.85rem;
+
+        h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        span {
+            display: block;
+            margin-top: 0.2rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    &__clear {
+        padding: 0;
+        border: none;
+        background: var(--transparent);
+        color: var(--primary-dark);
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+
+        &--danger {
+            color: var(--feedback-danger-600);
+        }
+    }
+
+    &__tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.4rem;
+        padding: 0.25rem;
+        margin-bottom: 0.8rem;
+        border-radius: 0.85rem;
+        background: var(--background);
+
+        button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            min-height: 2rem;
+            border: none;
+            border-radius: 0.65rem;
+            background: var(--transparent);
+            color: var(--neutral-slate-500);
+            font-size: 0.78rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+
+            .icon {
+                font-size: 0.9rem;
+            }
+
+            &.is-active {
+                background: var(--surface);
+                color: var(--text);
+                box-shadow: 0 8px 18px rgba(var(--neutral-slate-900-rgb), 0.08);
+            }
+        }
+    }
+
+    &__empty {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+    }
+
+    &__list {
+        display: grid;
+        gap: 0.75rem;
+        max-height: 320px;
+        overflow: auto;
+    }
+
+    &__item {
+        padding: 0.85rem;
+        border-radius: 0.9rem;
+        background: var(--background);
+        border: 1px solid var(--border-soft);
+        cursor: pointer;
+        transition: opacity 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+
+        &:hover {
+            transform: translateY(-1px);
+            border-color: var(--primary-shadow);
+        }
+
+        &.is-read {
+            opacity: 0.62;
+        }
+
+        &[data-level="success"] {
+            border-color: rgba(var(--feedback-success-500-rgb), 0.22);
+        }
+
+        &[data-level="error"] {
+            border-color: rgba(var(--feedback-danger-500-rgb), 0.22);
+        }
+
+        &[data-level="warning"] {
+            border-color: rgba(var(--feedback-warning-500-rgb), 0.22);
+        }
+
+        &--trash {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 0.85rem;
+            cursor: default;
+        }
+    }
+
+    &__item-title {
+        font-weight: 800;
+        color: var(--text);
+    }
+
+    &__item-message {
+        margin-top: 0.2rem;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+    }
+
+    &__item-date {
+        margin-top: 0.45rem;
+        font-size: 0.75rem;
+        color: var(--border-strong);
+    }
+
+    &__retention {
+        margin-bottom: 0.75rem;
+        padding: 0.65rem 0.75rem;
+        border-radius: 0.75rem;
+        background: var(--feedback-orange-50);
+        color: var(--feedback-orange-800);
+        font-size: 0.78rem;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    &__restore {
+        min-height: 2rem;
+        padding: 0 0.7rem;
+        border: 1px solid var(--primary-hover-soft);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--primary-dark);
+        font-size: 0.76rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 0.16s ease, border-color 0.16s ease;
+
+        &:hover {
+            transform: translateY(-1px);
+            border-color: var(--primary-shadow);
+        }
+    }
+}
+
+// Contenedor fijo de toasts: se mantiene visible aunque el usuario este al fondo
+// de una pagina y hereda paleta/tipografia desde los tokens globales del demo.
+.ui-toast-center {
+    position: fixed;
+    top: max(1rem, env(safe-area-inset-top));
+    right: max(1rem, env(safe-area-inset-right));
+    width: min(360px, calc(100vw - 2rem));
+    display: grid;
+    gap: 0.75rem;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.ui-toast {
+    // Acento por marca: permite que las paletas demo cambien bordes, glow y barra
+    // de progreso sin inline styles ni clases por color.
+    --toast-accent: var(--brand-primary);
+    --toast-accent-rgb: var(--brand-primary-rgb);
+    --toast-accent-end: var(--brand-accent);
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.85rem;
+    padding: 0.95rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(var(--toast-accent-rgb), 0.28);
+    background:
+        radial-gradient(circle at top right, rgba(var(--toast-accent-rgb), 0.12), var(--transparent) 42%),
+        rgba(var(--surface-rgb), 0.98);
+    box-shadow: 0 18px 36px rgba(var(--toast-accent-rgb), 0.16);
+    font-family: var(--font-body);
+    pointer-events: auto;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(-8px) scale(0.97);
+    opacity: 0;
+    transition: transform 0.22s ease, opacity 0.22s ease, box-shadow 0.22s ease;
+
+    &.is-visible {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    &__body {
+        display: grid;
+        gap: 0.25rem;
+
+        strong {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            line-height: 1.45;
+        }
+
+        span {
+            color: var(--border-strong);
+            font-size: 0.72rem;
+        }
+    }
+
+    &__close {
+        width: 1.8rem;
+        height: 1.8rem;
+        border: 1px solid rgba(var(--neutral-slate-400-rgb), 0.28);
+        border-radius: 999px;
+        background: rgba(var(--background-rgb), 0.92);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+
+        &:hover {
+            transform: scale(1.05);
+            background: var(--toast-accent);
+            color: var(--on-primary);
+        }
+    }
+
+    &__progress {
+        position: absolute;
+        inset: auto 0 0;
+        height: 3px;
+        background: rgba(var(--neutral-slate-400-rgb), 0.12);
+
+        span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            transform-origin: left center;
+            animation: ui-toast-progress linear forwards;
+            background: linear-gradient(90deg, var(--toast-accent) 0%, var(--toast-accent-end) 100%);
+        }
+    }
+}
+
+@keyframes ui-toast-progress {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .ui-toast-center {
+        left: 1rem;
+        right: 1rem;
+        width: auto;
+    }
+
+    .ui-notifications {
+        &__panel {
+            position: fixed;
+            top: 4.75rem;
+            left: 0.75rem;
+            right: 0.75rem;
+            width: auto;
+            max-width: none;
+            max-height: calc(100dvh - 5.5rem);
+            overflow: auto;
+        }
+
+        &__header {
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        &__actions {
+            justify-content: flex-start;
+        }
+
+        &__item {
+            &--trash {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        &__restore {
+            width: fit-content;
+        }
+    }
+}

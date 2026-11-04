@@ -1,0 +1,8 @@
+// Agregador temporal de primitivas UI UPTex. Los estilos viven en parciales
+// especializados para evitar que este archivo vuelva a concentrar responsabilidades.
+@use "admin-actions";
+@use "admin-dropdown";
+@use "ui-modal";
+@use "ui-search-bar";
+@use "mobile-table-carousel";
+@use "scroll-primitives";

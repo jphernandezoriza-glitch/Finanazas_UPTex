@@ -1,0 +1,172 @@
+// â”€â”€ FRAME MODALS (For PDF & Iframe viewers) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Specialized modal for large content like iframes or PDF viewers
+
+.ui-modal.finanzas-modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 20000 !important;
+
+  .ui-modal__overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(var(--neutral-slate-900-rgb), 0.5) !important;
+    backdrop-filter: blur(12px) !important;
+    cursor: pointer;
+  }
+
+  .ui-modal__container {
+    position: relative !important;
+    z-index: 20001 !important;
+    width: 95% !important;
+    max-width: 1400px !important;
+    height: 90vh !important;
+    max-height: 90vh !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border-radius: 24px !important;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, var(--panel-surface) 0%, var(--surface-soft) 100%) !important;
+    border: 1px solid rgba(var(--neutral-slate-300-rgb), 0.85) !important;
+    box-shadow: 0 30px 60px -16px rgba(var(--neutral-slate-900-rgb), 0.45) !important;
+    animation: modal-slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ui-modal__header {
+    flex: 0 0 auto;
+    padding: 20px 32px;
+    background: var(--panel-surface);
+    border-bottom: 1px solid var(--neutral-slate-200);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 90px;
+  }
+
+  .ui-modal__body {
+    flex: 1 1 auto;
+    padding: 28px !important;
+    margin: 0 !important;
+    overflow: auto !important; // Allow scrolling of the body if content overflows
+    background: var(--neutral-bluegray-50);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: calc(100% - 90px);
+  }
+
+  .finanzas-modal__frame {
+    width: 100%;
+    max-width: 1100px;
+    height: 100%;
+    border: 1px solid var(--neutral-bluegray-200) !important;
+    background: var(--panel-surface);
+    border-radius: 14px;
+    box-shadow: 0 14px 30px -20px rgba(var(--neutral-slate-900-rgb), 0.45), 0 8px 20px -16px rgba(var(--neutral-slate-900-rgb), 0.35);
+    flex-shrink: 0;
+  }
+
+  .finanzas-modal__frame--pdf {
+    max-width: 100%;
+    border: none !important;
+    border-radius: 12px;
+    box-shadow: none;
+    background: var(--transparent);
+  }
+
+  .ui-modal__body.is-query {
+    align-items: center;
+  }
+
+  .finanzas-modal__frame--query {
+    width: min(960px, 100%);
+    max-width: 960px;
+    min-height: 560px;
+    margin: 0 auto;
+  }
+
+  .ui-modal__container.is-query {
+    .ui-modal__body {
+      padding: 24px 28px 30px !important;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .finanzas-modal__frame--query {
+      height: clamp(560px, 68vh, 720px);
+    }
+  }
+
+  .ui-modal__container.is-pdf {
+    .ui-modal__body {
+      align-items: flex-start;
+    }
+
+    .finanzas-modal__frame--pdf {
+      height: 100%;
+      box-shadow: none;
+      background: var(--transparent);
+    }
+  }
+
+  .ui-modal__close {
+    position: absolute !important;
+    top: 24px !important;
+    right: 28px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 14px !important;
+    background: var(--neutral-slate-100) !important;
+    border: 1px solid var(--neutral-slate-200) !important;
+    color: var(--text-muted) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 22px !important;
+    z-index: 20005 !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--feedback-danger-100) !important;
+      color: var(--feedback-danger-500) !important;
+      transform: scale(1.1);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .ui-modal__container {
+      width: 96% !important;
+      height: 92vh !important;
+      border-radius: 18px !important;
+    }
+
+    .ui-modal__header {
+      padding: 18px 20px 18px 18px;
+      min-height: 78px;
+    }
+
+    .ui-modal__body {
+      padding: 16px !important;
+    }
+
+    .finanzas-modal__frame--query {
+      width: 100%;
+      min-height: 500px;
+    }
+  }
+}
+
+@keyframes modal-slide-up {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+

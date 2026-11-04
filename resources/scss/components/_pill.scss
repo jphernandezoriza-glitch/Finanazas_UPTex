@@ -1,0 +1,13 @@
+// Parcial SCSS: agrupa estilos de este modulo y debe consumir tokens globales para tema, paleta y responsividad.
+.pill {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+
+    &--code {
+        background: var(--neutral-cool-100);
+        color: var(--neutral-slate-700);
+    }
+}

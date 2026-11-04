@@ -1,0 +1,27 @@
+:root {
+    // Tipografía
+    --font-family: 'Inter', sans-serif;
+    --font-body: var(--font-family);
+    --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --font-size: 14px;
+    --font-weight: 400;
+    --line-height: 1.5;
+    --letter-spacing: 0px; // Inter has good default tracking
+}
+
+html[data-font='inter'] {
+    --font-family: 'Inter', sans-serif;
+}
+
+html[data-font='source'] {
+    --font-family: 'Source Sans 3', sans-serif;
+}
+
+html[data-font='plex'] {
+    --font-family: 'IBM Plex Sans', sans-serif;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+}

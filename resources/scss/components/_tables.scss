@@ -1,0 +1,228 @@
+@use "../utilities/mixins" as *;
+
+.admin-view {
+  // ── TABLE CARD (shared) ───────────────────────────
+  .admin-table-card {
+    @include admin-table-card-base;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-strong, var(--border));
+
+      h2, h3 {
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+      }
+    }
+
+    &__badge {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  /* ── TABLE RESPONSIVE WRAPPER ────────────────────── */
+  .admin-table-wrapper,
+  .admin-tbl-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    
+    // Custom scrollbar
+    &::-webkit-scrollbar { height: 6px; }
+    &::-webkit-scrollbar-track { background: var(--table-row-muted); }
+    &::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+    &::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
+  }
+
+  // ── TABLE STYLES ──────────────────────────────────
+  .admin-tbl {
+    display: table;
+    table-layout: auto;
+    width: 100%;
+    min-width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-family: var(--font-body);
+    background: var(--table-surface);
+
+    thead {
+      background: var(--table-header-bg);
+      
+      th {
+        padding: 14px 16px;
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-align: left;
+        border-bottom: 2px solid var(--border-strong, var(--border));
+        white-space: nowrap;
+      }
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s ease;
+
+      &:hover { 
+        background: var(--table-row-hover);
+      }
+      
+      &:last-child { 
+        border-bottom: none; 
+      }
+      
+      &.is-active,
+      &.is-selected {
+        background: var(--table-row-hover);
+      }
+    }
+
+    td {
+      padding: 14px 16px;
+      color: var(--text);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+
+    &__actions {
+      text-align: right;
+      width: 1%;
+      white-space: nowrap;
+    }
+
+    &--nested {
+      margin: 8px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      
+      thead th {
+        background: var(--table-header-bg);
+        padding: 10px 16px;
+      }
+    }
+  }
+
+  /* ── KARDEX SPECIAL ADAPTATION ──────────────────── */
+  .admin-kardex__tbl {
+    @extend .admin-tbl;
+  }
+
+  // Shared table text helpers used by admin-tbl and accordion tables.
+  .td-name {
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .td-sub {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .td-mono {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .td-bold {
+    font-family: var(--font-body);
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .admin-user-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .admin-user-info {
+    min-width: 0;
+  }
+
+  .admin-filter-actions,
+  .admin-row-actions,
+  .admin-badge-row,
+  .admin-flex-row-center--compact {
+    display: flex;
+    gap: 8px;
+  }
+
+  .admin-row-actions {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .admin-badge-row,
+  .admin-flex-row-center--compact {
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .admin-tbl__wide-cell {
+    min-width: 320px;
+  }
+
+  .admin-row-detail-cell {
+    padding: 0 !important;
+    border: none !important;
+    background: var(--table-row-muted);
+  }
+
+  .admin-muted {
+    color: var(--text-muted);
+  }
+
+  .admin-progress-container {
+    height: 6px;
+    background: var(--table-row-muted);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-right: 12px;
+  }
+
+  .admin-progress-bar {
+    height: 100%;
+    width: 0;
+    background: var(--primary);
+    border-radius: 99px;
+    transition: width 0.3s ease;
+  }
+
+  @for $i from 0 through 100 {
+    .admin-progress-bar--#{$i} {
+      width: #{$i}#{'%'};
+    }
+  }
+
+  .admin-progress-text {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+}

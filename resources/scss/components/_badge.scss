@@ -1,0 +1,195 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    /* Fully rounded by default */
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 14px;
+
+    &--success {
+        background: var(--feedback-green-100);
+        color: var(--feedback-green-700);
+    }
+
+    &--warning {
+        background: var(--feedback-warning-100);
+        color: var(--feedback-amber-700);
+    }
+
+    &--danger {
+        background: var(--feedback-danger-100);
+        color: var(--feedback-danger-700);
+    }
+
+    &--neutral {
+        background: var(--neutral-slate-100);
+        color: var(--neutral-slate-500);
+    }
+
+    &--info {
+        background: var(--feedback-info-100);
+        color: var(--feedback-info-700);
+    }
+
+    &--light-teal {
+        background: rgba(var(--icon-accent-rgb), 0.1);
+        color: var(--icon-accent);
+    }
+}
+
+/* KARDEX BADGES (Square-ish borders) */
+.k-badge {
+    display: inline-flex;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 10px;
+
+    &--approved {
+        background: rgba(var(--icon-accent-rgb), 0.1);
+        color: var(--icon-accent);
+    }
+
+    &--failed {
+        background: var(--feedback-danger-100);
+        color: var(--feedback-danger-700);
+    }
+
+    &--progress {
+        background: var(--neutral-slate-100);
+        border: 1px solid var(--border-soft);
+        color: var(--neutral-slate-500);
+    }
+}
+
+/* STATUS PILLS (with dot indicator) */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 700;
+
+    &__dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 9999px;
+    }
+
+    &--regular,
+    %status-completed {
+        background: var(--feedback-green-100);
+        color: var(--feedback-green-700);
+
+        .status-pill__dot {
+            background: var(--feedback-green-500);
+        }
+    }
+
+    &--riesgo,
+    %status-warning {
+        background: var(--feedback-orange-100);
+        color: var(--feedback-orange-700);
+
+        .status-pill__dot {
+            background: var(--feedback-warning-500);
+        }
+    }
+
+    &--pending {
+        background: var(--feedback-warning-100);
+        color: var(--feedback-amber-700);
+
+        .status-pill__dot {
+            background: var(--feedback-warning-500);
+        }
+    }
+
+    &--critical {
+        background: var(--feedback-danger-100);
+        color: var(--feedback-danger-700);
+
+        .status-pill__dot {
+            background: var(--feedback-danger-500);
+        }
+    }
+}
+
+/* STATUS DOT BADGE */
+
+.status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+
+    &::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+    }
+
+    &--active {
+        background: var(--feedback-emerald-100);
+        color: var(--feedback-success-700);
+
+        &::before {
+            background: var(--feedback-success-500);
+        }
+    }
+
+    &--inactive {
+        background: rgba(var(--sidebar-muted-rgb), 0.2);
+        color: var(--sidebar-muted);
+
+        &::before {
+            background: var(--sidebar-muted);
+        }
+    }
+}
+
+/* CODE PILL (LLT-2026-01) */
+
+.code-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 8px;
+    background: rgba(var(--icon-accent-rgb), 0.1);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--icon-accent);
+}
+
+
+.status-tag {
+    display: inline-flex;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+
+    &--critical {
+        background: var(--feedback-danger-100);
+        color: var(--feedback-danger-700);
+    }
+
+    &--warning {
+        background: var(--feedback-orange-100);
+        color: var(--feedback-orange-700);
+    }
+}

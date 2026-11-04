@@ -1,0 +1,403 @@
+/* ==============================
+   RESPONSIVE STYLES
+   ============================== */
+
+/* Base hidden elements for Desktop */
+.mobile-header {
+    display: none;
+}
+
+.sidebar-overlay {
+    display: none;
+}
+
+.aspirante-portal-content {
+    padding: 30px;
+}
+
+.aspirante-dashboard,
+.aspirante-info-view {
+    min-width: 0;
+    max-width: 100%;
+}
+
+
+/* Tablet & Smaller (<= 1024px) */
+@media (max-width: 1024px) {
+    .page-topbar {
+        padding: 12px 24px;
+        flex-wrap: wrap;
+        height: auto;
+        gap: 12px;
+
+        &__left {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        &__search {
+            width: 100%;
+            order: 3;
+            margin-top: 8px;
+        }
+
+        &__right {
+            width: 100%;
+            justify-content: flex-end;
+            order: 2;
+        }
+    }
+
+    .docente-dashboard-view,
+    .reportes-bi__main,
+    .gestion-academica {
+        padding: 24px;
+    }
+
+    .reportes-bi__kpis {
+        flex-wrap: wrap;
+    }
+
+    .kpi-panel {
+        flex: 1 1 calc(50% - 12px);
+    }
+
+    .reportes-bi__tables {
+        flex-direction: column;
+    }
+
+    .app__footer {
+        padding: 20px 24px;
+    }
+}
+
+/* Mobile (<= 768px) */
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .portal-layout__body {
+        min-height: auto;
+    }
+
+    /* Topbar hides logo and name to rely on Mobile Header */
+    .page-topbar {
+        padding: 12px 16px;
+
+        &__logo {
+            display: none;
+        }
+
+        &__nav {
+            display: none;
+            /* Hide top nav links on mobile */
+        }
+
+        &__right {
+            justify-content: flex-end;
+        }
+    }
+
+    /* Display mobile hamburger header */
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        background: var(--white);
+        border-bottom: 1px solid var(--neutral-slate-200);
+        gap: 16px;
+        position: sticky;
+        top: 0;
+        z-index: 45;
+
+        &__btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--neutral-slate-900);
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &__title {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--neutral-slate-900);
+            letter-spacing: -0.5px;
+        }
+    }
+
+    .page-topbar {
+        top: 0;
+    }
+
+    /* Overlay for Drawer */
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(var(--black-rgb), 0.5);
+        z-index: 55;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+
+        &.sidebar-overlay--active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    /* Transform Sidebar into Drawer */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        height: 100vh;
+        height: 100dvh;
+        z-index: 60;
+        width: 280px;
+        min-width: 280px;
+        max-width: 80vw;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 4px 0 24px rgba(var(--black-rgb), 0.1);
+
+        &.sidebar--open {
+            left: 0;
+        }
+
+        .sidebar__bottom {
+            max-height: 36dvh;
+        }
+    }
+
+    .aspirante-layout {
+        .page-topbar {
+            z-index: 40;
+        }
+
+        .mobile-header {
+            z-index: 45;
+        }
+
+        .sidebar-overlay {
+            z-index: 110;
+        }
+
+        .sidebar {
+            z-index: 120;
+        }
+
+        .aspirante-portal-content {
+            padding: 16px;
+        }
+    }
+
+    .aspirante-dashboard {
+        .admin-header {
+            padding: 24px !important;
+
+            h1 {
+                font-size: 1.55rem !important;
+                line-height: 1.15 !important;
+                overflow-wrap: anywhere;
+            }
+
+            p {
+                font-size: 0.95rem !important;
+                overflow-wrap: anywhere;
+            }
+        }
+
+        > div[style*="grid-template-columns"] {
+            grid-template-columns: 1fr !important;
+            gap: 18px !important;
+        }
+
+        .admin-card__body {
+            align-items: stretch !important;
+            flex-direction: column !important;
+            gap: 18px !important;
+        }
+
+        table {
+            min-width: 620px;
+        }
+
+        .admin-card__body:has(table) {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    .aspirante-info-view {
+        .dashboard-grid,
+        .data-grid,
+        .stats-grid,
+        .actions-grid {
+            grid-template-columns: 1fr !important;
+        }
+
+        .info-hero__content,
+        .detail-card__header,
+        .summary-card {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .detail-card,
+        .info-hero,
+        .summary-card {
+            min-width: 0;
+        }
+
+        .value {
+            overflow-wrap: anywhere;
+        }
+    }
+
+    /* Force collapsed state to NOT apply on Mobile drawer */
+    .app--collapsed .sidebar {
+        width: 280px;
+        min-width: 280px;
+
+        .sidebar__brand {
+            justify-content: flex-start;
+            padding: 24px;
+        }
+
+        .sidebar__brand-text,
+        .sidebar__user,
+        .sidebar__group-header,
+        .sidebar__item-label,
+        .sidebar__logout .sidebar__item-label {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+            max-width: 240px;
+        }
+
+        .sidebar__item {
+            justify-content: flex-start;
+        }
+
+        .sidebar__logout {
+            justify-content: flex-start;
+        }
+    }
+
+    /* General Padding Adjustments */
+    .docente-dashboard-view,
+    .reportes-bi__main,
+    .gestion-academica,
+    .horarios,
+    .calificaciones-view {
+        padding: 16px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        &__actions {
+            width: 100%;
+            flex-wrap: wrap;
+
+            .btn {
+                flex: 1;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    }
+
+    .gestion-academica__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        &-controls {
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 8px;
+
+            .btn,
+            .tab-group {
+                flex: 1 1 100%;
+                justify-content: center;
+            }
+        }
+    }
+
+    .tab-group {
+        width: 100%;
+        justify-content: center;
+
+        &__btn {
+            flex: 1;
+        }
+    }
+
+    .info-cards {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .hd-pagination {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+
+        &__per-page,
+        &__divider {
+            display: none;
+        }
+    }
+
+    /* Cards & Grids stack completely */
+    .kpi-panel {
+        flex: 1 1 100%;
+    }
+
+    .reportes-bi__tables {
+        .card {
+            width: 100%;
+        }
+    }
+
+    .cal-filters {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+
+        &__divider {
+            display: none;
+        }
+
+        &__selects,
+        &__search {
+            width: 100%;
+        }
+
+        .filter-select {
+            flex: 1;
+        }
+    }
+
+    .app__footer {
+        padding: 18px 16px;
+
+        p {
+            font-size: 10px;
+            line-height: 1.45;
+        }
+    }
+}

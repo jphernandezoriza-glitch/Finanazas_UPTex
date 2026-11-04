@@ -1,0 +1,7 @@
+{
+    "Auth": true,
+    "Core": true,
+    "PortalAdministrativo": true,
+    "PortalAlumno": true,
+    "Finanzas": true
+}

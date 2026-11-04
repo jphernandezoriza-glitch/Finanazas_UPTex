@@ -1,0 +1,77 @@
+.container {
+    width: 100%;
+    padding: 0 32px;
+}
+
+.section {
+    margin-bottom: 32px;
+}
+
+.text-muted {
+    color: rgba(var(--black-rgb), 0.5);
+}
+
+.shadow-sm {
+    box-shadow: 0 2px 6px rgba(var(--black-rgb), 0.05);
+}
+
+.rounded {
+    border-radius: 12px;
+}
+
+// Global Idempotency / Loading Styles
+.is-loading-global {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    opacity: 0.6 !important;
+    position: relative;
+    
+    &::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-top: -8px;
+        margin-left: -8px;
+        border: 2px solid rgba(var(--white-rgb), 0.3);
+        border-radius: 50%;
+        border-top-color: var(--white);
+        animation: spin-global 0.8s linear infinite;
+    }
+}
+
+@keyframes spin-global {
+    to { transform: rotate(360deg); }
+}
+
+/* Scrollbars unificados con el color primario de las variables */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary, var(--storm-teal)) var(--surface-soft);
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface-soft);
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary, var(--storm-teal));
+    border-radius: 9999px;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: var(--primary-dark);
+    }
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--transparent);
+}

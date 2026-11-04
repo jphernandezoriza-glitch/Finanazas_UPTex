@@ -1,0 +1,164 @@
+// Finanzas concentra tablas de validacion con columnas densas y acciones
+// operativas; este parcial limita esos ajustes al modulo para no alterar
+// tablas administrativas de Control Escolar, Sistemas o reportes.
+.admin-finanzas-pagos,
+.admin-finanzas-admision,
+.admin-finanzas-historial {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .admin-header__actions {
+    .admin-btn--ghost {
+      color: var(--white);
+
+      &:hover {
+        background: rgba(var(--white-rgb), 0.16);
+      }
+    }
+  }
+
+  .admin-table-wrapper {
+    overscroll-behavior-x: contain;
+  }
+}
+
+.admin-finanzas-table {
+  min-width: 1060px;
+
+  th,
+  td {
+    vertical-align: top;
+  }
+
+  th:last-child,
+  td:last-child {
+    width: 1%;
+  }
+
+  .td-name {
+    max-width: 260px;
+    line-height: 1.35;
+  }
+
+  .td-sub {
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+
+  &--reinscripcion {
+    min-width: 1180px;
+
+    th:nth-child(1) { width: 120px; }
+    th:nth-child(2) { width: 220px; }
+    th:nth-child(3) { width: 150px; }
+    th:nth-child(4) { width: 280px; }
+    th:nth-child(5) { width: 150px; }
+    th:nth-child(6) { width: 170px; }
+    th:nth-child(7) { width: 280px; }
+  }
+
+  &--admision {
+    min-width: 1080px;
+
+    th:nth-child(1) { width: 260px; }
+    th:nth-child(2) { width: 220px; }
+    th:nth-child(3) { width: 260px; }
+    th:nth-child(4) { width: 120px; }
+    th:nth-child(5) { width: 150px; }
+    th:nth-child(6) { width: 280px; }
+  }
+}
+
+.finanzas-data-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.45;
+
+  div {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 8px;
+    align-items: start;
+  }
+
+  strong {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+.finanzas-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 240px;
+  max-width: 280px;
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .admin-table-action,
+    button,
+    a {
+      flex: 1 1 118px;
+      justify-content: center;
+      min-width: 0;
+    }
+  }
+}
+
+.finanzas-comment {
+  width: 100%;
+  min-height: 72px;
+  max-height: 132px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--input-surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.45;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-ring);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.68;
+  }
+}
+
+@media (max-width: 900px) {
+  .admin-finanzas-pagos,
+  .admin-finanzas-admision {
+    .admin-header__actions {
+      width: 100%;
+      align-items: stretch;
+
+      .admin-btn {
+        justify-content: center;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,986 @@
+:root {
+    color-scheme: light;
+
+    // ==================================================
+    // GUIA RAPIDA DE PERSONALIZACION
+    // ==================================================
+    // Para cambiar el estilo institucional del sistema, edita primero
+    // los tokens de "Marca institucional". Las cards, heroes, sidebar,
+    // iconos y acentos de navegacion heredan desde ahi.
+    //
+    // Para una universidad azul/naranja/roja/rosa:
+    // 1. Cambia --brand-primary y --brand-primary-rgb.
+    // 2. Ajusta --brand-secondary para el segundo punto de gradientes.
+    // 3. Ajusta --brand-accent solo si quieres un acento diferente.
+    //
+    // No agregues aliases tipo --color-hex: usa nombres semanticos.
+
+    // ==================================================
+    // 1. Marca institucional
+    // ==================================================
+    --brand-primary: #0F766E;
+    --brand-primary-rgb: 15, 118, 110;
+    --brand-secondary: #1D6B7B;
+    --brand-secondary-rgb: 29, 107, 123;
+    --brand-accent: #14B8A6;
+    --brand-accent-rgb: 20, 184, 166;
+    --brand-primary-hover: #2F5B5E;
+    --brand-primary-hover-rgb: 47, 91, 94;
+    --brand-primary-dark: #0B7268;
+    --brand-primary-dark-rgb: 11, 114, 104;
+
+    // ==================================================
+    // 2. Alias principales del sistema
+    // ==================================================
+    --primary: var(--brand-primary);
+    --primary-rgb: var(--brand-primary-rgb);
+    --primary-hover: var(--brand-primary-hover);
+    --primary-hover-rgb: var(--brand-primary-hover-rgb);
+    --primary-dark: var(--brand-primary-dark);
+    --primary-dark-rgb: var(--brand-primary-dark-rgb);
+    --primary-light: rgba(var(--primary-rgb), 0.14);
+    --primary-soft: rgba(var(--primary-rgb), 0.08);
+    --primary-hover-soft: rgba(var(--primary-rgb), 0.14);
+    --primary-ring: rgba(var(--primary-rgb), 0.28);
+    --primary-shadow: rgba(var(--primary-rgb), 0.24);
+    --on-primary: var(--white);
+    --on-primary-rgb: var(--white-rgb);
+
+    // ==================================================
+    // 3. Superficies y texto
+    // ==================================================
+    // Tokens base visibles para superficies, texto y compatibilidad general.
+    --graphite: #353535;
+    --storm-teal: var(--brand-primary);
+    --white: #FFFFFF;
+    --transparent: transparent;
+    --alabaster-gray: #D9D9D9;
+    --yale-blue: #284B63;
+
+    // Variables semánticas (IMPORTANTES)
+    --background: #F7F7F7;
+    --background-rgb: 247, 247, 247;
+    --surface: #FFFFFF;
+    --surface-rgb: 255, 255, 255;
+    --surface-soft: #F3F4F6;
+    --surface-soft-rgb: 243, 244, 246;
+    --surface-raised: #FFFFFF;
+    --surface-raised-rgb: 255, 255, 255;
+    --panel-surface: var(--surface);
+    --panel-surface-rgb: var(--surface-rgb);
+    --table-surface: var(--surface);
+    --table-surface-rgb: var(--surface-rgb);
+    --table-header-bg: var(--surface-soft);
+    --table-header-bg-rgb: var(--surface-soft-rgb);
+    --table-row-hover: var(--primary-soft);
+    --table-row-muted: var(--surface-soft);
+    --input-surface: var(--surface);
+    --input-surface-rgb: var(--surface-rgb);
+    --input-border: var(--border);
+    --input-border-rgb: var(--border-rgb);
+    --text: #131515;
+    --text-rgb: 19, 21, 21;
+    --text-muted: #6F797B;
+    --text-muted-rgb: 111, 121, 123;
+    --page-text: var(--text);
+    --page-text-rgb: var(--text-rgb);
+    --page-text-muted: var(--text-muted);
+    --page-text-muted-rgb: var(--text-muted-rgb);
+    --border: #D1D5DB;
+    --border-rgb: 209, 213, 219;
+    --border-soft: #E5E7EB;
+    --border-soft-rgb: 229, 231, 235;
+    --border-strong: #94A3B8;
+    --border-strong-rgb: 148, 163, 184;
+
+    --white-rgb: 255, 255, 255;
+    --on-dark: #F8FAFC;
+    --on-dark-rgb: 248, 250, 252;
+    --on-dark-muted: #CBD5E1;
+    --on-dark-muted-rgb: 203, 213, 225;
+    --shell-surface: var(--surface);
+    --shell-surface-rgb: var(--surface-rgb);
+    --shell-text: var(--text);
+    --shell-text-rgb: var(--text-rgb);
+    --shell-muted: var(--text-muted);
+    --shell-muted-rgb: var(--text-muted-rgb);
+    --shell-border: var(--border-soft);
+    --shell-border-rgb: var(--border-soft-rgb);
+
+    // ==================================================
+    // 5. Estados operativos
+    // ==================================================
+    // Estos colores comunican significado y no dependen de la marca.
+    --success: #3FA796;
+    --success-rgb: 63, 167, 150;
+    --success-light: #D8F3EC;
+    --success-dark: #2E7D70;
+
+    --warning: #E9B949;
+    --warning-rgb: 233, 185, 73;
+    --warning-light: #FFF4D6;
+    --warning-dark: #C28C1B;
+    --risk-alert-rgb: 249, 115, 22;
+
+    --danger: #D64550;
+    --danger-rgb: 214, 69, 80;
+    --danger-light: #FDE2E4;
+    --danger-dark: #9E2A2F;
+
+    --info: #3A86B9;
+    --info-rgb: 58, 134, 185;
+    --info-light: #E3F2FD;
+    --info-dark: #1F4E79;
+
+    // Colores adicionales para componentes dinámicos (Horarios, Gráficos)
+    --purple: #8B5CF6;
+    --purple-rgb: 139, 92, 246;
+    --purple-light: #F5F3FF;
+    --purple-dark: #5B21B6;
+
+    --indigo: #6366F1;
+    --indigo-rgb: 99, 102, 241;
+    --indigo-light: #EEF2FF;
+    --indigo-dark: #3730A3;
+
+    --cyan: #06B6D4;
+    --cyan-rgb: 6, 182, 212;
+    --cyan-light: #ECFEFF;
+    --cyan-dark: #083344;
+
+    // ==================================================
+    // 4. Componentes institucionales
+    // ==================================================
+    --hero-bg-start: var(--brand-primary);
+    --hero-bg-start-rgb: var(--brand-primary-rgb);
+    --hero-bg-end: var(--brand-secondary);
+    --hero-bg-end-rgb: var(--brand-secondary-rgb);
+    --portal-hero-bg-start: var(--hero-bg-start);
+    --portal-hero-bg-start-rgb: var(--hero-bg-start-rgb);
+    --portal-hero-bg-end: var(--hero-bg-end);
+    --portal-hero-bg-end-rgb: var(--hero-bg-end-rgb);
+    --portal-hero-accent: var(--hero-bg-start);
+    --portal-hero-accent-rgb: var(--hero-bg-start-rgb);
+    --portal-hero-highlight: rgba(var(--white-rgb), 0.18);
+    --portal-hero-shadow: rgba(var(--hero-bg-start-rgb), 0.18);
+    --sidebar-bg: #232729;
+    --sidebar-bg-rgb: 35, 39, 41;
+    --sidebar-text: #CFD8DC;
+    --sidebar-text-rgb: 207, 216, 220;
+    --sidebar-muted: #949597;
+    --sidebar-muted-rgb: 148, 149, 151;
+    --sidebar-active: var(--brand-primary);
+    --sidebar-active-rgb: var(--brand-primary-rgb);
+    --sidebar-hover: rgba(var(--sidebar-active-rgb), 0.12);
+    --sidebar-active-bg: rgba(var(--sidebar-active-rgb), 0.2);
+    --sidebar-active-ring: rgba(var(--sidebar-active-rgb), 0.35);
+    --card-accent: var(--brand-primary);
+    --card-accent-rgb: var(--brand-primary-rgb);
+    --card-accent-soft: rgba(var(--card-accent-rgb), 0.12);
+    --accent-on-surface: var(--brand-primary);
+    --accent-on-surface-rgb: var(--brand-primary-rgb);
+    --icon-accent: var(--brand-primary);
+    --icon-accent-rgb: var(--brand-primary-rgb);
+    --icon-accent-soft: rgba(var(--icon-accent-rgb), 0.12);
+    --module-accent: var(--brand-primary);
+    --module-accent-rgb: var(--brand-primary-rgb);
+    --module-accent-soft: rgba(var(--module-accent-rgb), 0.12);
+    --admin-primary: var(--brand-primary);
+    --admin-primary-rgb: var(--brand-primary-rgb);
+    --admin-secondary: var(--brand-secondary);
+    --admin-secondary-rgb: var(--brand-secondary-rgb);
+    --admin-accent: var(--brand-accent);
+    --admin-accent-rgb: var(--brand-accent-rgb);
+
+    // ==================================================
+    // 6. Escalas semanticas reutilizables
+    // ==================================================
+    // Cada token existe porque al menos una vista activa lo usa. Si un tono
+    // deja de aparecer en SCSS productivo, se elimina en vez de volver a crear
+    // aliases tipo --color-hex.
+    --black: #000000;
+    --black-rgb: 0, 0, 0;
+    --shadow-rgb: var(--black-rgb);
+    --neutral-slate-950: #020617;
+    --neutral-slate-950-rgb: 2, 6, 23;
+    --neutral-slate-900: #0F172A;
+    --neutral-slate-900-rgb: 15, 23, 42;
+    --neutral-slate-800: #1E293B;
+    --neutral-slate-800-rgb: 30, 41, 59;
+    --neutral-slate-700: #334155;
+    --neutral-slate-600: #475569;
+    --neutral-slate-500: #64748B;
+    --neutral-slate-400-rgb: 148, 163, 184;
+    --neutral-slate-300: #CBD5E1;
+    --neutral-slate-300-rgb: 203, 213, 225;
+    --neutral-slate-200: #E2E8F0;
+    --neutral-slate-200-rgb: 226, 232, 240;
+    --neutral-slate-100: #F1F5F9;
+    --neutral-slate-50: #F8FAFC;
+    --neutral-slate-50-rgb: 248, 250, 252;
+    --neutral-gray-900: #111827;
+    --neutral-gray-850: #333333;
+    --neutral-gray-800: #1F2937;
+    --neutral-gray-700: #374151;
+    --neutral-gray-650: #5E5E5E;
+    --neutral-gray-600: #4B5563;
+    --neutral-gray-500: #6B7280;
+    --neutral-gray-500-rgb: 107, 114, 128;
+    --neutral-gray-400: #9CA3AF;
+    --neutral-gray-50: #F9FAFB;
+    --neutral-zinc-600: #525659;
+    --neutral-stone-950: #1C1917;
+    --neutral-stone-50: #FAFAFA;
+    --neutral-ink-950: #0F1A1C;
+    --neutral-ink-900: #1A202C;
+    --neutral-charcoal-800: #2D3335;
+    --neutral-charcoal-700: #2D3436;
+    --neutral-charcoal-700-rgb: 45, 52, 54;
+    --neutral-app-50: #FBFBFC;
+    --neutral-app-25: #FCFCFD;
+    --neutral-cool-100: #EEF2F5;
+    --neutral-bluegray-300: #D1D8DD;
+    --neutral-bluegray-200: #D6DDE8;
+    --neutral-bluegray-100: #DBE3EA;
+    --neutral-bluegray-50: #EEF2F7;
+    --neutral-bluegray-25: #FCFDFE;
+    --feedback-success-900: #134E4A;
+    --feedback-success-800: #065F46;
+    --feedback-success-700: #047857;
+    --feedback-success-600: #059669;
+    --feedback-success-600-rgb: 5, 150, 105;
+    --feedback-success-500: #10B981;
+    --feedback-success-500-rgb: 16, 185, 129;
+    --feedback-success-200: #BCF0DA;
+    --feedback-success-bootstrap-rgb: 212, 237, 218;
+    --feedback-green-900: #14532D;
+    --feedback-green-800: #166534;
+    --feedback-green-700: #15803D;
+    --feedback-green-600: #16A34A;
+    --feedback-green-600-rgb: 22, 163, 74;
+    --feedback-green-500: #22C55E;
+    --feedback-green-500-rgb: 34, 197, 94;
+    --feedback-green-200: #BBF7D0;
+    --feedback-green-100: #DCFCE7;
+    --feedback-green-50: #F0FDF4;
+    --feedback-emerald-100: #D1FAE5;
+    --feedback-emerald-50: #ECFDF5;
+    --feedback-teal-400: #2DD4BF;
+    --feedback-teal-400-rgb: 45, 212, 191;
+    --feedback-teal-50: #F0FDFA;
+    --feedback-danger-800: #991B1B;
+    --feedback-danger-700: #B91C1C;
+    --feedback-danger-650: #C53030;
+    --feedback-danger-600: #DC2626;
+    --feedback-danger-600-rgb: 220, 38, 38;
+    --feedback-danger-500: #EF4444;
+    --feedback-danger-500-rgb: 239, 68, 68;
+    --feedback-danger-300: #FEB2B2;
+    --feedback-danger-200: #FECACA;
+    --feedback-danger-100: #FEE2E2;
+    --feedback-danger-50: #FEF2F2;
+    --feedback-danger-25: #FFF5F5;
+    --feedback-danger-bootstrap-rgb: 248, 215, 218;
+    --feedback-rose-500: #F43F5E;
+    --danger-dark-rgb: 158, 42, 47;
+    --feedback-warning-900: #856404;
+    --feedback-warning-900-rgb: 133, 100, 4;
+    --feedback-warning-500: #F59E0B;
+    --feedback-warning-500-rgb: 245, 158, 11;
+    --feedback-warning-150: #FFF3CD;
+    --feedback-warning-150-rgb: 255, 243, 205;
+    --feedback-warning-100: #FEF3C7;
+    --feedback-warning-50: #FFFBEB;
+    --feedback-warning-25: #FFFDF7;
+    --feedback-warning-soft: #F7D774;
+    --feedback-amber-950-rgb: 120, 53, 15;
+    --feedback-amber-800: #92400E;
+    --feedback-amber-700: #B45309;
+    --feedback-amber-700-rgb: 180, 83, 9;
+    --feedback-amber-600: #D97706;
+    --feedback-amber-600-rgb: 217, 119, 6;
+    --feedback-amber-200: #FDE68A;
+    --feedback-yellow-600: #CA8A04;
+    --feedback-yellow-500: #EAB308;
+    --feedback-yellow-500-rgb: 234, 179, 8;
+    --feedback-yellow-200: #FEF08A;
+    --warning-dark-rgb: 194, 140, 27;
+    --feedback-orange-800: #9A3412;
+    --feedback-orange-700: #C2410C;
+    --feedback-orange-600-rgb: 234, 88, 12;
+    --feedback-orange-500: #F97316;
+    --feedback-orange-400: #FB923C;
+    --feedback-orange-300: #FDBA74;
+    --feedback-orange-100: #FFEDD5;
+    --feedback-orange-50: #FFF7ED;
+    --feedback-orange-accent: #F35022;
+    --feedback-info-800: #075985;
+    --feedback-info-700: #0369A1;
+    --feedback-info-600: #0284C7;
+    --feedback-info-500: #0EA5E9;
+    --feedback-info-500-rgb: 14, 165, 233;
+    --feedback-info-200: #BAE6FD;
+    --feedback-info-100: #E0F2FE;
+    --feedback-blue-700: #1D4ED8;
+    --feedback-blue-600: #2563EB;
+    --feedback-blue-500: #3B82F6;
+    --feedback-blue-500-rgb: 59, 130, 246;
+    --feedback-blue-200: #BFDBFE;
+    --feedback-blue-50: #EFF6FF;
+    --feedback-sky-400: #38BDF8;
+    --feedback-sky-50: #F0F9FF;
+    --feedback-cyan-700: #0E7490;
+    --feedback-purple-700: #7E22CE;
+    --feedback-purple-600: #7C3AED;
+    --feedback-purple-500: #A855F7;
+    --feedback-purple-200: #E9D5FF;
+    --feedback-purple-100: #F3E8FF;
+    --feedback-purple-50: #FAF5FF;
+    --feedback-indigo-600: #4F46E5;
+    --feedback-indigo-600-rgb: 79, 70, 229;
+    --institutional-teal-950: #0D3D4A;
+    --institutional-teal-900: #0F3D4A;
+    --institutional-teal-900-rgb: 15, 61, 74;
+    --institutional-teal-800: #0F4C5C;
+    --institutional-teal-800-rgb: 15, 76, 92;
+    --institutional-teal-700: #156D82;
+    --institutional-cyan-700: #1A6D82;
+    --institutional-cyan-700-rgb: 21, 109, 130;
+    --institutional-muted-teal: #4F737D;
+    --institutional-muted-teal-rgb: 79, 115, 125;
+    --institutional-teal-muted-800: #2C5154;
+    --institutional-teal-muted-700: #315D62;
+    --institutional-teal-muted-600: #3C6E71;
+    --institutional-teal-muted-600-rgb: 60, 110, 113;
+    --institutional-teal-shadow-rgb: 7, 42, 40;
+    --institutional-surface-teal: #EEF7F5;
+    --institutional-surface-faint: #F7FBFB;
+    --institutional-surface-subtle: #F8FBFB;
+    --institutional-surface-muted-rgb: 240, 246, 246;
+    --institutional-surface-near-white: #FBFDFD;
+    --institutional-surface-near-white-rgb: 250, 252, 252;
+    --schedule-grid-ink: #132F3F;
+    --schedule-grid-accent-rgb: 40, 75, 99;
+    --schedule-event-blue-border: #2196F3;
+    --schedule-event-blue-text-strong: #0D47A1;
+    --schedule-event-green-bg: #E8F5E9;
+    --schedule-event-green-border: #4CAF50;
+    --schedule-event-green-text-strong: #1B5E20;
+    --schedule-event-cyan-bg: #E0F7FA;
+    --schedule-event-cyan-border: #00BCD4;
+    --schedule-event-cyan-text-strong: #006064;
+    --schedule-event-orange-bg: #FFF3E0;
+    --schedule-event-orange-border: #FF9800;
+    --schedule-event-orange-accent: #EF7D00;
+    --schedule-event-orange-text-strong: #E65100;
+    --schedule-event-red-bg: #FFEBEE;
+    --schedule-event-red-border: #F44336;
+    --schedule-event-red-text-strong: #B71C1C;
+    --schedule-event-purple-bg: #F3E5F5;
+    --schedule-event-purple-border: #9C27B0;
+    --schedule-event-purple-text-strong: #4A148C;
+    --schedule-event-indigo-bg: #E8EAF6;
+    --schedule-event-indigo-border: #3F51B5;
+    --schedule-event-indigo-text-strong: #1A237E;
+    --academic-border-muted: #DFE1E2;
+    --academic-progress-lime: #80BB00;
+    --calendar-deep-teal: #12303A;
+    --calendar-surface-soft: #FBFDFF;
+    --calendar-warning-accent: #FFB900;
+    --chart-sky-accent: #00A1F1;
+
+}
+
+html[data-theme='dark'] {
+    color-scheme: dark;
+
+    // Modo dark accesible:
+    // - Fondo profundo y superficies elevadas oscuras.
+    // - Acento teal con luminancia suficiente para texto y enlaces.
+    // - Bordes/controles con contraste perceptible sin recurrir a blanco fijo.
+    --brand-primary: #5EEAD4;
+    --brand-primary-rgb: 94, 234, 212;
+    --brand-secondary: #38BDF8;
+    --brand-secondary-rgb: 56, 189, 248;
+    --brand-accent: #2DD4BF;
+    --brand-accent-rgb: 45, 212, 191;
+    --brand-primary-hover: #99F6E4;
+    --brand-primary-hover-rgb: 153, 246, 228;
+    --brand-primary-dark: #2DD4BF;
+    --brand-primary-dark-rgb: 45, 212, 191;
+
+    --background: #071316;
+    --background-rgb: 7, 19, 22;
+    --surface: #102126;
+    --surface-rgb: 16, 33, 38;
+    --surface-soft: #162B31;
+    --surface-soft-rgb: 22, 43, 49;
+    --surface-raised: #1B333A;
+    --surface-raised-rgb: 27, 51, 58;
+    --panel-surface: var(--surface);
+    --panel-surface-rgb: var(--surface-rgb);
+    --table-surface: var(--surface);
+    --table-surface-rgb: var(--surface-rgb);
+    --table-header-bg: #203A42;
+    --table-header-bg-rgb: 32, 58, 66;
+    --table-row-hover: rgba(var(--primary-rgb), 0.12);
+    --table-row-muted: var(--surface-soft);
+    --input-surface: #0D1C20;
+    --input-surface-rgb: 13, 28, 32;
+    --input-border: var(--border);
+    --input-border-rgb: var(--border-rgb);
+    --text: #F4FAFB;
+    --text-rgb: 244, 250, 251;
+    --text-muted: #BFD4D9;
+    --text-muted-rgb: 191, 212, 217;
+    --page-text: var(--text);
+    --page-text-rgb: var(--text-rgb);
+    --page-text-muted: var(--text-muted);
+    --page-text-muted-rgb: var(--text-muted-rgb);
+    --border: #527A84;
+    --border-rgb: 82, 122, 132;
+    --border-soft: #365861;
+    --border-soft-rgb: 54, 88, 97;
+    --border-strong: #8BB6BD;
+    --border-strong-rgb: 139, 182, 189;
+    --on-dark: #FFFFFF;
+    --on-dark-rgb: 255, 255, 255;
+    --on-dark-muted: #D7E7EA;
+    --on-dark-muted-rgb: 215, 231, 234;
+    --shell-surface: #0D1820;
+    --shell-surface-rgb: 13, 24, 32;
+    --shell-text: #F8FAFC;
+    --shell-text-rgb: 248, 250, 252;
+    --shell-muted: #D7E7EA;
+    --shell-muted-rgb: 215, 231, 234;
+    --shell-border: #263F49;
+    --shell-border-rgb: 38, 63, 73;
+    --accent-on-surface: var(--brand-primary);
+    --accent-on-surface-rgb: var(--brand-primary-rgb);
+    --card-accent: var(--accent-on-surface);
+    --card-accent-rgb: var(--accent-on-surface-rgb);
+    --icon-accent: var(--accent-on-surface);
+    --icon-accent-rgb: var(--accent-on-surface-rgb);
+    --module-accent: var(--accent-on-surface);
+    --module-accent-rgb: var(--accent-on-surface-rgb);
+    --primary-soft: rgba(var(--primary-rgb), 0.12);
+    --primary-hover-soft: rgba(var(--primary-rgb), 0.18);
+    --primary-ring: rgba(var(--primary-rgb), 0.32);
+    --primary-shadow: rgba(var(--primary-rgb), 0.28);
+    --on-primary: var(--background);
+    --on-primary-rgb: var(--background-rgb);
+    --portal-hero-bg-start: #0B4F4C;
+    --portal-hero-bg-start-rgb: 11, 79, 76;
+    --portal-hero-bg-end: #123F52;
+    --portal-hero-bg-end-rgb: 18, 63, 82;
+    --portal-hero-accent: #2AA99B;
+    --portal-hero-accent-rgb: 42, 169, 155;
+    --portal-hero-highlight: rgba(var(--on-dark-rgb), 0.045);
+    --portal-hero-shadow: rgba(var(--black-rgb), 0.34);
+
+    --success: #5EEAD4;
+    --success-rgb: 94, 234, 212;
+    --success-light: rgba(var(--success-rgb), 0.14);
+    --success-dark: #A7F3D0;
+
+    --warning: #FBBF24;
+    --warning-rgb: 251, 191, 36;
+    --warning-light: rgba(var(--warning-rgb), 0.14);
+    --warning-dark: #FDE68A;
+    --risk-alert-rgb: 251, 146, 60;
+
+    --danger: #F87171;
+    --danger-rgb: 248, 113, 113;
+    --danger-light: rgba(var(--danger-rgb), 0.14);
+    --danger-dark: #FCA5A5;
+
+    --info: #60A5FA;
+    --info-rgb: 96, 165, 250;
+    --info-light: rgba(var(--info-rgb), 0.14);
+    --info-dark: #BFDBFE;
+}
+
+// ==================================================
+// PALETAS DEMO DEL SISTEMA
+// ==================================================
+// Estas paletas se activan con html[data-palette='clave'] mientras
+// el modo demo esta encendido. Para dejar una paleta como predeterminada:
+// 1. Usa la clave indicada en PublicConfigForm (original, azul, rojo, etc.).
+// 2. Cambia el data-palette inicial o conserva solo el bloque deseado.
+// 3. Si comentas o borras paletas, actualiza tambien las etiquetas/opciones
+//    en el arreglo demoPaletteOptions() para que las claves coincidan.
+// Los tokens --demo-palette-* pintan exclusivamente los swatches del selector.
+
+:root {
+    --demo-palette-original-primary: #0F766E;
+    --demo-palette-original-secondary: #155E75;
+    --demo-palette-original-accent: #14B8A6;
+    --demo-palette-azul-primary: #2563EB;
+    --demo-palette-azul-secondary: #1E40AF;
+    --demo-palette-azul-accent: #38BDF8;
+    --demo-palette-rojo-primary: #9B2247;
+    --demo-palette-rojo-secondary: #611232;
+    --demo-palette-rojo-accent: #B8325C;
+    --demo-palette-rosa-primary: #C83A8B;
+    --demo-palette-rosa-secondary: #8A1455;
+    --demo-palette-rosa-accent: #E05297;
+    --demo-palette-naranja-primary: #C2410C;
+    --demo-palette-naranja-secondary: #7C2D12;
+    --demo-palette-naranja-accent: #EA580C;
+    --demo-palette-verde-primary: #15803D;
+    --demo-palette-verde-secondary: #14532D;
+    --demo-palette-verde-accent: #22C55E;
+    --demo-palette-morado-primary: #7E22CE;
+    --demo-palette-morado-secondary: #581C87;
+    --demo-palette-morado-accent: #A855F7;
+    --demo-palette-amarillo-primary: #8A7408;
+    --demo-palette-amarillo-secondary: #5F4B06;
+    --demo-palette-amarillo-accent: #EAB308;
+}
+
+// PALETA ORIGINAL
+html[data-palette='original'] {
+    --brand-primary: #0F766E;
+    --brand-primary-rgb: 15, 118, 110;
+    --brand-secondary: #155E75;
+    --brand-secondary-rgb: 21, 94, 117;
+    --brand-accent: #14B8A6;
+    --brand-accent-rgb: 20, 184, 166;
+    --brand-primary-hover: #2F5B5E;
+    --brand-primary-hover-rgb: 47, 91, 94;
+    --brand-primary-dark: #0B7268;
+    --brand-primary-dark-rgb: 11, 114, 104;
+    --primary: var(--brand-primary);
+    --primary-rgb: var(--brand-primary-rgb);
+    --primary-hover: var(--brand-primary-hover);
+    --primary-hover-rgb: var(--brand-primary-hover-rgb);
+    --primary-dark: var(--brand-primary-dark);
+    --primary-dark-rgb: var(--brand-primary-dark-rgb);
+    --on-primary: var(--white);
+    --on-primary-rgb: var(--white-rgb);
+    --portal-hero-bg-start: var(--brand-primary);
+    --portal-hero-bg-start-rgb: var(--brand-primary-rgb);
+    --portal-hero-bg-end: var(--brand-secondary);
+    --portal-hero-bg-end-rgb: var(--brand-secondary-rgb);
+    --portal-hero-accent: var(--brand-accent);
+    --portal-hero-accent-rgb: var(--brand-accent-rgb);
+    --portal-hero-highlight: rgba(var(--white-rgb), 0.18);
+    --portal-hero-shadow: rgba(var(--brand-primary-rgb), 0.18);
+}
+
+html[data-theme='dark'][data-palette='original'] {
+    --brand-primary: #5EEAD4;
+    --brand-primary-rgb: 94, 234, 212;
+    --brand-secondary: #38BDF8;
+    --brand-secondary-rgb: 56, 189, 248;
+    --brand-accent: #2DD4BF;
+    --brand-accent-rgb: 45, 212, 191;
+    --brand-primary-hover: #99F6E4;
+    --brand-primary-hover-rgb: 153, 246, 228;
+    --brand-primary-dark: #2DD4BF;
+    --brand-primary-dark-rgb: 45, 212, 191;
+    --on-primary: var(--background);
+    --on-primary-rgb: var(--background-rgb);
+    --portal-hero-bg-start: #0B4F4C;
+    --portal-hero-bg-start-rgb: 11, 79, 76;
+    --portal-hero-bg-end: #123F52;
+    --portal-hero-bg-end-rgb: 18, 63, 82;
+    --portal-hero-accent: #2AA99B;
+    --portal-hero-accent-rgb: 42, 169, 155;
+    --portal-hero-highlight: rgba(var(--on-dark-rgb), 0.045);
+    --portal-hero-shadow: rgba(var(--black-rgb), 0.34);
+}
+
+// PALETA AZUL
+html[data-palette='azul'] {
+    --brand-primary: #2563EB;
+    --brand-primary-rgb: 37, 99, 235;
+    --brand-secondary: #1E40AF;
+    --brand-secondary-rgb: 30, 64, 175;
+    --brand-accent: #38BDF8;
+    --brand-accent-rgb: 56, 189, 248;
+    --brand-primary-hover: #1D4ED8;
+    --brand-primary-hover-rgb: 29, 78, 216;
+    --brand-primary-dark: #1E3A8A;
+    --brand-primary-dark-rgb: 30, 58, 138;
+    --primary: var(--brand-primary);
+    --primary-rgb: var(--brand-primary-rgb);
+    --primary-hover: var(--brand-primary-hover);
+    --primary-hover-rgb: var(--brand-primary-hover-rgb);
+    --primary-dark: var(--brand-primary-dark);
+    --primary-dark-rgb: var(--brand-primary-dark-rgb);
+    --on-primary: var(--white);
+    --on-primary-rgb: var(--white-rgb);
+    --portal-hero-bg-start: var(--brand-primary);
+    --portal-hero-bg-start-rgb: var(--brand-primary-rgb);
+    --portal-hero-bg-end: var(--brand-secondary);
+    --portal-hero-bg-end-rgb: var(--brand-secondary-rgb);
+    --portal-hero-accent: var(--brand-accent);
+    --portal-hero-accent-rgb: var(--brand-accent-rgb);
+    --portal-hero-highlight: rgba(var(--white-rgb), 0.16);
+    --portal-hero-shadow: rgba(var(--brand-primary-rgb), 0.18);
+}
+
+html[data-theme='dark'][data-palette='azul'] {
+    --brand-primary: #93C5FD;
+    --brand-primary-rgb: 147, 197, 253;
+    --brand-secondary: #60A5FA;
+    --brand-secondary-rgb: 96, 165, 250;
+    --brand-accent: #7DD3FC;
+    --brand-accent-rgb: 125, 211, 252;
+    --brand-primary-hover: #BFDBFE;
+    --brand-primary-hover-rgb: 191, 219, 254;
+    --brand-primary-dark: #60A5FA;
+    --brand-primary-dark-rgb: 96, 165, 250;
+    --on-primary: var(--background);
+    --on-primary-rgb: var(--background-rgb);
+    --portal-hero-bg-start: #1E3A8A;
+    --portal-hero-bg-start-rgb: 30, 58, 138;
+    --portal-hero-bg-end: #075985;
+    --portal-hero-bg-end-rgb: 7, 89, 133;
+    --portal-hero-accent: #93C5FD;
+    --portal-hero-accent-rgb: 147, 197, 253;
+    --portal-hero-highlight: rgba(var(--on-dark-rgb), 0.08);
+    --portal-hero-shadow: rgba(var(--black-rgb), 0.22);
+}
+
+// PALETA ROJO
+html[data-palette='rojo'] {
+    --brand-primary: #9B2247;
+    --brand-primary-rgb: 155, 34, 71;
+    --brand-secondary: #611232;
+    --brand-secondary-rgb: 97, 18, 50;
+    --brand-accent: #B8325C;
+    --brand-accent-rgb: 184, 50, 92;
+    --brand-primary-hover: #7A1939;
+    --brand-primary-hover-rgb: 122, 25, 57;
+    --brand-primary-dark: #611232;
+    --brand-primary-dark-rgb: 97, 18, 50;
+    --primary: var(--brand-primary);
+    --primary-rgb: var(--brand-primary-rgb);
+    --primary-hover: var(--brand-primary-hover);
+    --primary-hover-rgb: var(--brand-primary-hover-rgb);
+    --primary-dark: var(--brand-primary-dark);
+    --primary-dark-rgb: var(--brand-primary-dark-rgb);
+    --on-primary: var(--white);
+    --on-primary-rgb: var(--white-rgb);
+    --portal-hero-bg-start: var(--brand-primary);
+    --portal-hero-bg-start-rgb: var(--brand-primary-rgb);
+    --portal-hero-bg-end: var(--brand-secondary);
+    --portal-hero-bg-end-rgb: var(--brand-secondary-rgb);
+    --portal-hero-accent: var(--brand-accent);
+    --portal-hero-accent-rgb: var(--brand-accent-rgb);
+    --portal-hero-highlight: rgba(var(--white-rgb), 0.14);
+    --portal-hero-shadow: rgba(var(--brand-primary-rgb), 0.17);
+}
+
+html[data-theme='dark'][data-palette='rojo'] {
+    --brand-primary: #DC6F90;
+    --brand-primary-rgb: 220, 111, 144;
+    --brand-secondary: #D45A7C;
+    --brand-secondary-rgb: 212, 90, 124;
+    --brand-accent: #F0A3B9;
+    --brand-accent-rgb: 240, 163, 185;
+    --brand-primary-hover: #E17B9A;
+    --brand-primary-hover-rgb: 225, 123, 154;
+    --brand-primary-dark: #DC6F90;
+    --brand-primary-dark-rgb: 220, 111, 144;
+    --on-primary: var(--background);
+    --on-primary-rgb: var(--background-rgb);
+    --portal-hero-bg-start: #611232;
+    --portal-hero-bg-start-rgb: 97, 18, 50;
+    --portal-hero-bg-end: #9B2247;
+    --portal-hero-bg-end-rgb: 155, 34, 71;
+    --portal-hero-accent: #DC6F90;
+    --portal-hero-accent-rgb: 220, 111, 144;
+    --portal-hero-highlight: rgba(var(--on-dark-rgb), 0.07);
+    --portal-hero-shadow: rgba(var(--black-rgb), 0.22);
+}
+
+// PALETA ROSA
+html[data-palette='rosa'] {
+    --brand-primary: #C83A8B;
+    --brand-primary-rgb: 200, 58, 139;
+    --brand-secondary: #8A1455;
+    --brand-secondary-rgb: 138, 20, 85;
+    --brand-accent: #E05297;
+    --brand-accent-rgb: 224, 82, 151;
+    --brand-primary-hover: #A21B65;
+    --brand-primary-hover-rgb: 162, 27, 101;
+    --brand-primary-dark: #8A1455;
+    --brand-primary-dark-rgb: 138, 20, 85;
+    --primary: var(--brand-primary);
+    --primary-rgb: var(--brand-primary-rgb);
+    --primary-hover: var(--brand-primary-hover);
+    --primary-hover-rgb: var(--brand-primary-hover-rgb);
+    --primary-dark: var(--brand-primary-dark);
+    --primary-dark-rgb: var(--brand-primary-dark-rgb);
+    --on-primary: var(--white);
+    --on-primary-rgb: var(--white-rgb);
+    --portal-hero-bg-start: var(--brand-primary);
+    --portal-hero-bg-start-rgb: var(--brand-primary-rgb);
+    --portal-hero-bg-end: var(--brand-secondary);
+    --portal-hero-bg-end-rgb: var(--brand-secondary-rgb);
+    --portal-hero-accent: var(--brand-accent);
+    --portal-hero-accent-rgb: var(--brand-accent-rgb);
+    --portal-hero-highlight: rgba(var(--white-rgb), 0.14);
+    --portal-hero-shadow: rgba(var(--brand-primary-rgb), 0.17);
+}
+
+html[data-theme='dark'][data-palette='rosa'] {
+    --brand-primary: #F9A8D4;
+    --brand-primary-rgb: 249, 168, 212;
+    --brand-secondary: #F472B6;
+    --brand-secondary-rgb: 244, 114, 182;
+    --brand-accent: #FBCFE8;
+    --brand-accent-rgb: 251, 207, 232;
+    --brand-primary-hover: #FBCFE8;
+    --brand-primary-hover-rgb: 251, 207, 232;
+    --brand-primary-dark: #F472B6;
+    --brand-primary-dark-rgb: 244, 114, 182;
+    --on-primary: var(--background);
+    --on-primary-rgb: var(--background-rgb);
+    --portal-hero-bg-start: #8A1455;
+    --portal-hero-bg-start-rgb: 138, 20, 85;
+    --portal-hero-bg-end: #B83280;
+    --portal-hero-bg-end-rgb: 184, 50, 128;
+    --portal-hero-accent: #F9A8D4;
+    --portal-hero-accent-rgb: 249, 168, 212;
+    --portal-hero-highlight: rgba(var(--on-dark-rgb), 0.07);
+    --portal-hero-shadow: rgba(var(--black-rgb), 0.22);
+}
+
+// PALETA NARANJA
+html[data-palette='naranja'] {
+    --brand-primary: #C2410C;
+    --brand-primary-rgb: 194, 65, 12;
+    --brand-secondary: #7C2D12;
+    --brand-secondary-rgb: 124, 45, 18;
+    --brand-accent: #EA580C;
+    --brand-accent-rgb: 234, 88, 12;
+    --brand-primary-hover: #9A3412;
+    --brand-primary-hover-rgb: 154, 52, 18;
+    --brand-primary-dark: #7C2D12;
+    --brand-primary-dark-rgb: 124, 45, 18;
+    --primary: var(--brand-primary);
+    --primary-rgb: var(--brand-primary-rgb);
+    --primary-hover: var(--brand-primary-hover);
+    --primary-hover-rgb: var(--brand-primary-hover-rgb);
+    --primary-dark: var(--brand-primary-dark);
+    --primary-dark-rgb: var(--brand-primary-dark-rgb);
+    --on-primary: var(--white);
+    --on-primary-rgb: var(--white-rgb);
+    --portal-hero-bg-start: var(--brand-primary);
+    --portal-hero-bg-start-rgb: var(--brand-primary-rgb);
+    --portal-hero-bg-end: var(--brand-secondary);
+    --portal-hero-bg-end-rgb: var(--brand-secondary-rgb);
+    --portal-hero-accent: var(--brand-accent);
+    --portal-hero-accent-rgb: var(--brand-accent-rgb);
+    --portal-hero-highlight: rgba(var(--white-rgb), 0.14);
+    --portal-hero-shadow: rgba(var(--brand-primary-rgb), 0.17);
+}
+
+html[data-theme='dark'][data-palette='naranja'] {
+    --brand-primary: #FDBA74;
+    --brand-primary-rgb: 253, 186, 116;
+    --brand-secondary: #FB923C;
+    --brand-secondary-rgb: 251, 146, 60;
+    --brand-accent: #FED7AA;
+    --brand-accent-rgb: 254, 215, 170;
+    --brand-primary-hover: #FED7AA;
+    --brand-primary-hover-rgb: 254, 215, 170;
+    --brand-primary-dark: #FB923C;
+    --brand-primary-dark-rgb: 251, 146, 60;
+    --on-primary: var(--background);
+    --on-primary-rgb: var(--background-rgb);
+    --portal-hero-bg-start: #7C2D12;
+    --portal-hero-bg-start-rgb: 124, 45, 18;
+    --portal-hero-bg-end: #9A3412;
+    --portal-hero-bg-end-rgb: 154, 52, 18;
+    --portal-hero-accent: #FDBA74;
+    --portal-hero-accent-rgb: 253, 186, 116;
+    --portal-hero-highlight: rgba(var(--on-dark-rgb), 0.07);
+    --portal-hero-shadow: rgba(var(--black-rgb), 0.22);
+}
+
+// PALETA VERDE
+html[data-palette='verde'] {
+    --brand-primary: #15803D;
+    --brand-primary-rgb: 21, 128, 61;
+    --brand-secondary: #14532D;
+    --brand-secondary-rgb: 20, 83, 45;
+    --brand-accent: #22C55E;
+    --brand-accent-rgb: 34, 197, 94;
+    --brand-primary-hover: #166534;
+    --brand-primary-hover-rgb: 22, 101, 52;
+    --brand-primary-dark: #14532D;
+    --brand-primary-dark-rgb: 20, 83, 45;
+    --primary: var(--brand-primary);
+    --primary-rgb: var(--brand-primary-rgb);
+    --primary-hover: var(--brand-primary-hover);
+    --primary-hover-rgb: var(--brand-primary-hover-rgb);
+    --primary-dark: var(--brand-primary-dark);
+    --primary-dark-rgb: var(--brand-primary-dark-rgb);
+    --on-primary: var(--white);
+    --on-primary-rgb: var(--white-rgb);
+    --portal-hero-bg-start: var(--brand-primary);
+    --portal-hero-bg-start-rgb: var(--brand-primary-rgb);
+    --portal-hero-bg-end: var(--brand-secondary);
+    --portal-hero-bg-end-rgb: var(--brand-secondary-rgb);
+    --portal-hero-accent: var(--brand-accent);
+    --portal-hero-accent-rgb: var(--brand-accent-rgb);
+    --portal-hero-highlight: rgba(var(--white-rgb), 0.14);
+    --portal-hero-shadow: rgba(var(--brand-primary-rgb), 0.17);
+}
+
+html[data-theme='dark'][data-palette='verde'] {
+    --brand-primary: #86EFAC;
+    --brand-primary-rgb: 134, 239, 172;
+    --brand-secondary: #4ADE80;
+    --brand-secondary-rgb: 74, 222, 128;
+    --brand-accent: #BBF7D0;
+    --brand-accent-rgb: 187, 247, 208;
+    --brand-primary-hover: #BBF7D0;
+    --brand-primary-hover-rgb: 187, 247, 208;
+    --brand-primary-dark: #4ADE80;
+    --brand-primary-dark-rgb: 74, 222, 128;
+    --on-primary: var(--background);
+    --on-primary-rgb: var(--background-rgb);
+    --portal-hero-bg-start: #14532D;
+    --portal-hero-bg-start-rgb: 20, 83, 45;
+    --portal-hero-bg-end: #166534;
+    --portal-hero-bg-end-rgb: 22, 101, 52;
+    --portal-hero-accent: #86EFAC;
+    --portal-hero-accent-rgb: 134, 239, 172;
+    --portal-hero-highlight: rgba(var(--on-dark-rgb), 0.07);
+    --portal-hero-shadow: rgba(var(--black-rgb), 0.22);
+}
+
+// PALETA MORADO
+html[data-palette='morado'] {
+    --brand-primary: #7E22CE;
+    --brand-primary-rgb: 126, 34, 206;
+    --brand-secondary: #581C87;
+    --brand-secondary-rgb: 88, 28, 135;
+    --brand-accent: #A855F7;
+    --brand-accent-rgb: 168, 85, 247;
+    --brand-primary-hover: #6B21A8;
+    --brand-primary-hover-rgb: 107, 33, 168;
+    --brand-primary-dark: #4C1D95;
+    --brand-primary-dark-rgb: 76, 29, 149;
+    --primary: var(--brand-primary);
+    --primary-rgb: var(--brand-primary-rgb);
+    --primary-hover: var(--brand-primary-hover);
+    --primary-hover-rgb: var(--brand-primary-hover-rgb);
+    --primary-dark: var(--brand-primary-dark);
+    --primary-dark-rgb: var(--brand-primary-dark-rgb);
+    --on-primary: var(--white);
+    --on-primary-rgb: var(--white-rgb);
+    --portal-hero-bg-start: var(--brand-primary);
+    --portal-hero-bg-start-rgb: var(--brand-primary-rgb);
+    --portal-hero-bg-end: var(--brand-secondary);
+    --portal-hero-bg-end-rgb: var(--brand-secondary-rgb);
+    --portal-hero-accent: var(--brand-accent);
+    --portal-hero-accent-rgb: var(--brand-accent-rgb);
+    --portal-hero-highlight: rgba(var(--white-rgb), 0.14);
+    --portal-hero-shadow: rgba(var(--brand-primary-rgb), 0.17);
+}
+
+html[data-theme='dark'][data-palette='morado'] {
+    --brand-primary: #C4B5FD;
+    --brand-primary-rgb: 196, 181, 253;
+    --brand-secondary: #A78BFA;
+    --brand-secondary-rgb: 167, 139, 250;
+    --brand-accent: #DDD6FE;
+    --brand-accent-rgb: 221, 214, 254;
+    --brand-primary-hover: #DDD6FE;
+    --brand-primary-hover-rgb: 221, 214, 254;
+    --brand-primary-dark: #A78BFA;
+    --brand-primary-dark-rgb: 167, 139, 250;
+    --on-primary: var(--background);
+    --on-primary-rgb: var(--background-rgb);
+    --portal-hero-bg-start: #4C1D95;
+    --portal-hero-bg-start-rgb: 76, 29, 149;
+    --portal-hero-bg-end: #581C87;
+    --portal-hero-bg-end-rgb: 88, 28, 135;
+    --portal-hero-accent: #C4B5FD;
+    --portal-hero-accent-rgb: 196, 181, 253;
+    --portal-hero-highlight: rgba(var(--on-dark-rgb), 0.07);
+    --portal-hero-shadow: rgba(var(--black-rgb), 0.22);
+}
+
+// PALETA AMARILLO
+html[data-palette='amarillo'] {
+    --brand-primary: #8A7408;
+    --brand-primary-rgb: 138, 116, 8;
+    --brand-secondary: #5F4B06;
+    --brand-secondary-rgb: 95, 75, 6;
+    --brand-accent: #EAB308;
+    --brand-accent-rgb: 234, 179, 8;
+    --brand-primary-hover: #786107;
+    --brand-primary-hover-rgb: 120, 97, 7;
+    --brand-primary-dark: #5F4B06;
+    --brand-primary-dark-rgb: 95, 75, 6;
+    --primary: var(--brand-primary);
+    --primary-rgb: var(--brand-primary-rgb);
+    --primary-hover: var(--brand-primary-hover);
+    --primary-hover-rgb: var(--brand-primary-hover-rgb);
+    --primary-dark: var(--brand-primary-dark);
+    --primary-dark-rgb: var(--brand-primary-dark-rgb);
+    --on-primary: var(--white);
+    --on-primary-rgb: var(--white-rgb);
+    --portal-hero-bg-start: var(--brand-primary);
+    --portal-hero-bg-start-rgb: var(--brand-primary-rgb);
+    --portal-hero-bg-end: var(--brand-secondary);
+    --portal-hero-bg-end-rgb: var(--brand-secondary-rgb);
+    --portal-hero-accent: var(--brand-accent);
+    --portal-hero-accent-rgb: var(--brand-accent-rgb);
+    --portal-hero-highlight: rgba(var(--white-rgb), 0.14);
+    --portal-hero-shadow: rgba(var(--brand-primary-rgb), 0.17);
+}
+
+html[data-theme='dark'][data-palette='amarillo'] {
+    --brand-primary: #FDE047;
+    --brand-primary-rgb: 253, 224, 71;
+    --brand-secondary: #EAB308;
+    --brand-secondary-rgb: 234, 179, 8;
+    --brand-accent: #FEF08A;
+    --brand-accent-rgb: 254, 240, 138;
+    --brand-primary-hover: #FEF08A;
+    --brand-primary-hover-rgb: 254, 240, 138;
+    --brand-primary-dark: #EAB308;
+    --brand-primary-dark-rgb: 234, 179, 8;
+    --on-primary: var(--background);
+    --on-primary-rgb: var(--background-rgb);
+    --portal-hero-bg-start: #5F4B06;
+    --portal-hero-bg-start-rgb: 95, 75, 6;
+    --portal-hero-bg-end: #786107;
+    --portal-hero-bg-end-rgb: 120, 97, 7;
+    --portal-hero-accent: #FDE047;
+    --portal-hero-accent-rgb: 253, 224, 71;
+    --portal-hero-highlight: rgba(var(--on-dark-rgb), 0.07);
+    --portal-hero-shadow: rgba(var(--black-rgb), 0.22);
+}
+
+// ===================================
+// SASS VARIABLES (Mapped to CSS)
+// ===================================
+$primary: var(--primary);
+$primary-hover: var(--primary-hover);
+$primary-dark: var(--primary-dark);
+$brand-primary: var(--brand-primary);
+$brand-secondary: var(--brand-secondary);
+$brand-accent: var(--brand-accent);
+$card-accent: var(--card-accent);
+$icon-accent: var(--icon-accent);
+$text: var(--text);
+$text-muted: var(--text-muted);
+$background: var(--background);
+$surface: var(--surface);
+$border: var(--border);
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(var(--black-rgb), 0.1);
+$shadow-md: 0 4px 6px -1px rgba(var(--black-rgb), 0.15), 0 2px 4px -1px rgba(var(--black-rgb), 0.08);
+$shadow-lg: 0 10px 15px -3px rgba(var(--black-rgb), 0.18), 0 4px 6px -2px rgba(var(--black-rgb), 0.08);
+$shadow-xl: 0 20px 25px -5px rgba(var(--black-rgb), 0.1), 0 10px 10px -5px rgba(var(--black-rgb), 0.04);

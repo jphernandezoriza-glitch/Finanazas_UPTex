@@ -1,0 +1,1 @@
+{{-- Acceso ficticio exclusivo para el entorno de desarrollo entregado. --}}<h1>Finanzas starter</h1><form method="post" action="/login">@csrf @error('email')<p>{{ $message }}</p>@enderror<input name="email" placeholder="Correo"><input name="password" type="password" placeholder="Contraseña"><button>Entrar</button><p>finanzas.demo@example.test / password</p></form>

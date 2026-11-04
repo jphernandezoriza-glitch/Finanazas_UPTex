@@ -1,0 +1,186 @@
+/* ==============================
+   MAIN APP WRAPPER
+   ============================== */
+.app {
+    display: flex;
+    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    background: var(--background);
+    overflow: hidden;
+    min-width: 0;
+}
+
+/* Fix for double scroll in portals */
+:root:has(.app) {
+    overflow: hidden;
+    height: 100%;
+
+    body {
+        overflow: hidden;
+        height: 100%;
+    }
+}
+
+/* ==============================
+   MAIN CONTENT AREA
+   ============================== */
+.app__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--background);
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-width: 0;
+}
+
+.portal-layout__content {
+    scroll-behavior: smooth;
+}
+
+.app.portal-layout {
+    --portal-content-padding: 20px;
+    --portal-header-height: 64px;
+}
+
+.portal-layout__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    min-height: 0;
+    box-sizing: border-box;
+    padding: 0; // Se quita el padding global para que la cabecera interna pueda tocar los bordes
+    overflow: hidden;
+    background: var(--background);
+    color: var(--page-text);
+}
+
+.portal-layout__body > * {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.portal-layout__header {
+    width: 100%;
+    z-index: 50;
+}
+
+.portal-layout__header-bar {
+    width: 100%;
+    border-radius: 0;
+}
+
+.app.portal-layout .page-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--portal-header-height);
+    padding: 0 32px;
+    background: var(--shell-surface);
+    border-bottom: 1px solid var(--shell-border);
+    color: var(--shell-text);
+    box-shadow: none;
+    position: sticky;
+    top: 0;
+    min-height: var(--portal-header-height);
+    margin-top: 0;
+    z-index: 40;
+    width: 100%;
+
+    // Avoid clipping when nested in wrappers with transforms/overflow tweaks.
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.app.portal-layout .portal-kardex .kardex-view {
+    min-width: 0;
+
+    .kardex-layout {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .app.portal-layout {
+        --portal-content-padding: 16px;
+    }
+
+    .app.portal-layout .page-topbar {
+        padding: 12px 24px;
+        height: auto;
+        min-height: var(--portal-header-height);
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .app.portal-layout .page-topbar__left {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .app.portal-layout .page-topbar__search {
+        width: 100%;
+        order: 3;
+        margin-top: 8px;
+    }
+
+    .app.portal-layout .page-topbar__right {
+        width: 100%;
+        justify-content: flex-end;
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .app.portal-layout {
+        --portal-content-padding: 12px;
+    }
+
+    .app.portal-layout .page-topbar {
+        padding: 12px 16px;
+        top: 0;
+    }
+
+    .app.portal-layout .page-topbar__logo,
+    .app.portal-layout .page-topbar__nav {
+        display: none;
+    }
+
+    .app.portal-layout .page-topbar__right {
+        justify-content: flex-end;
+    }
+}
+
+/* ==============================
+   UNIVERSAL FOOTER
+   ============================== */
+.app__footer {
+    padding: 24px 40px;
+    text-align: center;
+    border-top: 1px solid var(--border-soft);
+    background: var(--surface);
+    flex-shrink: 0;
+    margin-top: auto;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+
+    p {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-muted);
+        letter-spacing: 0.02em;
+        margin: 0;
+    }
+}
+
+html[data-theme='dark'] {
+    .app.portal-layout .page-topbar {
+        box-shadow: 0 16px 32px rgba(var(--black-rgb), 0.18);
+    }
+}
